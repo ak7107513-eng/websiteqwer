@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>For My Dearest Brekhna Gul 🌹 | From Your Janam Arsalan Khan</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Dancing+Script:wght@600;700&family=Great+Vibes&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Canvas Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #18000b 0%, #3b0018 25%, #6b002c 50%, #830035 75%, #2a0010 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: #ffffff;
+        }
+
+        .font-handwriting {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .font-cursive-title {
+            font-family: 'Great Vibes', cursive;
+        }
+
+        .font-poetry-title {
+            font-family: 'Cinzel Decorative', serif;
+        }
+
+        /* Animated Glowing Background Lights */
+        @keyframes ambientGlow {
+            0%, 100% { filter: drop-shadow(0 0 25px rgba(244, 63, 94, 0.6)) drop-shadow(0 0 10px rgba(251, 191, 36, 0.4)); }
+            50% { filter: drop-shadow(0 0 45px rgba(236, 72, 153, 0.8)) drop-shadow(0 0 20px rgba(244, 114, 182, 0.6)); }
+        }
+
+        .animate-ambient {
+            animation: ambientGlow 3.5s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 0.9; transform: scale(1.05); }
+        }
+
+        .animate-pulse-glow {
+            animation: pulseGlow 2.5s infinite ease-in-out;
+        }
+
+        /* Glassmorphism Styling with Vibrant Gold/Neon Trim */
+        .glass-card {
+            background: rgba(30, 0, 15, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 2px solid rgba(251, 191, 36, 0.4);
+            box-shadow: 0 25px 50px -12px rgba(225, 29, 72, 0.5), 0 0 30px rgba(244, 63, 94, 0.3) inset;
+        }
+
+        .poetry-card {
+            background: linear-gradient(145deg, rgba(45, 0, 22, 0.88), rgba(80, 0, 38, 0.85));
+            backdrop-filter: blur(20px);
+            border: 2px solid #f59e0b;
+            box-shadow: 0 0 30px rgba(245, 158, 11, 0.3), inset 0 0 15px rgba(251, 191, 36, 0.2);
+        }
+
+        /* Interactive 3D Envelope Styling */
+        .envelope-wrapper {
+            position: relative;
+            cursor: pointer;
+            perspective: 1000px;
+            width: 100%;
+            max-width: 340px;
+        }
+
+        .envelope {
+            position: relative;
+            width: 100%;
+            height: 210px;
+            background: linear-gradient(135deg, #fb7185 0%, #e11d48 100%);
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(225, 29, 72, 0.5), 0 0 20px rgba(251, 191, 36, 0.3);
+            border: 2px solid #fcd34d;
+            transition: all 0.5s ease;
+            margin: 0 auto;
+        }
+
+        .envelope::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 168px solid #f43f5e;
+            border-right: 168px solid #f43f5e;
+            border-top: 105px solid transparent;
+            border-bottom: 105px solid #be123c;
+            border-bottom-left-radius: 14px;
+            border-bottom-right-radius: 14px;
+            z-index: 3;
+        }
+
+        @media (max-width: 380px) {
+            .envelope::before {
+                border-left-width: 140px;
+                border-right-width: 140px;
+            }
+        }
+
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            margin: 0 auto;
+            border-left: 168px solid transparent;
+            border-right: 168px solid transparent;
+            border-top: 115px solid #fb7185;
+            transform-origin: top;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 4;
+        }
+
+        @media (max-width: 380px) {
+            .envelope-flap {
+                border-left-width: 140px;
+                border-right-width: 140px;
+            }
+        }
+
+        .envelope.open .envelope-flap {
+            transform: rotateX(180deg);
+            z-index: 1;
+        }
+
+        .letter {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            background: #fffdfa;
+            color: #1e293b;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 -5px 25px rgba(0,0,0,0.3);
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s;
+            z-index: 2;
+            opacity: 0;
+            pointer-events: none;
+            max-height: 65vh;
+            overflow-y: auto;
+            border: 2px solid #fb7185;
+        }
+
+        .envelope.open .letter {
+            transform: translateY(-80px) scale(1.02);
+            opacity: 1;
+            z-index: 10;
+            pointer-events: auto;
+        }
+
+        /* Canvas Background */
+        #heartCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Custom Mobile Range Slider */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]:focus {
+            outline: none;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 18px;
+            cursor: pointer;
+            background: linear-gradient(90deg, #f43f5e 0%, #ec4899 50%, #fbbf24 100%);
+            border-radius: 10px;
+            border: 1px solid #fcd34d;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+        }
+        input[type=range]::-webkit-slider-thumb {
+            height: 34px;
+            width: 34px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 3.5px solid #e11d48;
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -8px;
+            box-shadow: 0 4px 15px rgba(244, 63, 94, 0.8);
+            transition: transform 0.2s;
+        }
+        input[type=range]::-webkit-slider-thumb:active {
+            transform: scale(1.3);
+            background: #ffe4e1;
+        }
+
+        .letter::-webkit-scrollbar {
+            width: 6px;
+        }
+        .letter::-webkit-scrollbar-track {
+            background: #fff1f2;
+        }
+        .letter::-webkit-scrollbar-thumb {
+            background: #f43f5e;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="min-h-screen text-white flex flex-col justify-between relative selection:bg-rose-500 selection:text-white">
+
+    <!-- Floating Background Hearts & Sparkles Canvas -->
+    <canvas id="heartCanvas"></canvas>
+
+    <!-- Audio Control Floating Button -->
+    <div class="fixed top-4 right-4 z-50">
+        <button id="musicBtn" onclick="toggleAudio()" class="bg-rose-900/80 backdrop-blur-md p-3.5 rounded-full shadow-2xl border-2 border-amber-400 text-amber-300 hover:bg-rose-800 active:scale-95 transition-all duration-300 flex items-center justify-center">
+            <i id="musicIcon" class="fas fa-music text-lg"></i>
+        </button>
+    </div>
+
+    <!-- Main Container -->
+    <main class="relative z-10 flex-grow flex items-center justify-center p-3 sm:p-6 my-auto">
+
+        <!-- ================= PAGE 1: WELCOME SCREEN ================= -->
+        <section id="section1" class="w-full max-w-lg text-center transition-all duration-700 opacity-100 transform translate-y-0 my-auto">
+            <div class="glass-card rounded-3xl p-6 sm:p-10 relative overflow-hidden animate-ambient">
+                <div class="absolute -top-16 -right-16 w-36 h-36 bg-pink-500/40 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -bottom-16 -left-16 w-36 h-36 bg-amber-500/30 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="inline-block p-4 bg-gradient-to-br from-rose-500 to-pink-600 text-amber-300 rounded-full mb-5 shadow-2xl border-2 border-amber-300 animate-bounce">
+                    <span class="text-4xl sm:text-5xl">🌹</span>
+                </div>
+
+                <h1 class="text-3xl sm:text-4xl font-extrabold text-white mb-3 tracking-tight leading-snug drop-shadow-md">
+                    Hey <span class="font-handwriting text-5xl sm:text-6xl text-amber-300 block mt-1 drop-shadow-lg">Brekhna Gul</span> 🌹
+                </h1>
+
+                <p class="text-rose-200 text-base sm:text-lg mb-8 leading-relaxed font-medium">
+                    Your <strong class="text-amber-300 font-bold">Janam</strong> Has Made Something For You... ✨
+                </p>
+
+                <button onclick="goToSection(2)" class="w-full sm:w-auto px-9 py-4 bg-gradient-to-r from-rose-600 via-pink-600 to-amber-500 hover:from-rose-500 hover:to-amber-400 text-white font-extrabold text-lg rounded-2xl shadow-2xl hover:shadow-rose-500/50 active:scale-95 transition-all duration-300 flex items-center justify-center gap-3 mx-auto border-2 border-amber-300">
+                    <span>Let Me See ❤️</span>
+                    <i class="fas fa-arrow-right text-amber-200 animate-pulse text-lg"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 2: LOVE METER QUESTION ================= -->
+        <section id="section2" class="w-full max-w-xl text-center hidden opacity-0 transform translate-y-8 transition-all duration-700 my-auto">
+            <div class="glass-card rounded-3xl p-6 sm:p-9 shadow-2xl">
+                
+                <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-tr from-rose-600 to-pink-500 rounded-2xl text-amber-300 mb-4 shadow-xl border border-amber-300">
+                    <i class="fas fa-heartbeat text-3xl animate-pulse"></i>
+                </div>
+
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-2 leading-snug drop-shadow-md">
+                    Your Janam <span class="text-amber-300 block sm:inline">Arsalan Khan</span> Loves YOU Soo Much! 💕
+                </h2>
+                
+                <p class="text-rose-300 font-semibold text-base sm:text-lg mb-6">
+                    Do you love him also?
+                </p>
+
+                <!-- Interactive Love Meter Slider -->
+                <div class="bg-rose-950/80 p-5 rounded-2xl border-2 border-rose-500/50 mb-6 shadow-inner">
+                    <input type="range" id="loveSlider" min="1" max="5" value="1" step="1" oninput="updateLoveLevel(this.value)" class="touch-pan-x">
+                    
+                    <div class="flex justify-between text-[11px] sm:text-xs text-rose-300 font-bold mt-3 px-1">
+                        <span>Level 1</span>
+                        <span>Level 2</span>
+                        <span>Level 3</span>
+                        <span>Level 4</span>
+                        <span>Level 5</span>
+                    </div>
+                </div>
+
+                <!-- Reaction Box -->
+                <div id="reactionBox" class="min-h-[120px] bg-rose-900/90 p-5 rounded-2xl border-2 border-amber-400 flex flex-col items-center justify-center mb-8 shadow-lg transition-all duration-300">
+                    <div id="reactionEmoji" class="text-4xl sm:text-5xl mb-2 transition-all duration-300 transform scale-100">😏</div>
+                    <div id="reactionText" class="text-amber-300 font-bold text-base sm:text-lg text-center leading-snug">
+                        "A little bit... 😏 Arsalan needs more love!"
+                    </div>
+                </div>
+
+                <!-- Page Progress Guard Button -->
+                <button id="p2ContinueBtn" onclick="goToSection(3)" class="w-full py-4 bg-gradient-to-r from-rose-600 via-pink-600 to-amber-500 text-white font-extrabold text-lg rounded-2xl shadow-xl transition-all duration-300 opacity-50 pointer-events-none flex items-center justify-center gap-2 border-2 border-amber-300">
+                    <span>Continue to Secret Envelope 💌</span>
+                    <i class="fas fa-lock text-sm" id="p2LockIcon"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 3: ENVELOPE & ISLAMIC LOVE LETTER ================= -->
+        <section id="section3" class="w-full max-w-xl text-center hidden opacity-0 transform translate-y-8 transition-all duration-700 flex flex-col items-center my-auto">
+            
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-1 drop-shadow-md">A Secret Letter For Brekhna Gul 💌</h2>
+            <p class="text-rose-200 text-xs sm:text-sm mb-6">Tap the golden heart seal to open your letter</p>
+
+            <!-- Interactive 3D Envelope -->
+            <div id="envelopeContainer" class="envelope-wrapper my-2">
+                <div id="envelope" class="envelope flex items-center justify-center">
+                    <div class="envelope-flap"></div>
+                    
+                    <div id="sealBtn" onclick="openEnvelope()" class="z-20 w-16 h-16 bg-gradient-to-tr from-amber-400 to-yellow-300 text-rose-900 rounded-full flex items-center justify-center shadow-2xl hover:scale-105 active:scale-90 transition-all border-2 border-white cursor-pointer">
+                        <i class="fas fa-heart text-2xl animate-pulse"></i>
+                    </div>
+
+                    <div id="letterContent" class="letter text-left border-2 border-rose-400">
+                        <div class="text-center border-b-2 border-rose-200 pb-3 mb-4">
+                            <span class="text-[11px] uppercase tracking-widest text-rose-600 font-extrabold block">Bismillah Ar-Rahman Ar-Rahim</span>
+                            <h3 class="font-handwriting text-3xl sm:text-4xl text-rose-700 font-extrabold mt-1">My Dearest Brekhna Gul 🌸</h3>
+                        </div>
+
+                        <div class="text-slate-800 text-sm sm:text-base leading-relaxed space-y-4 font-normal">
+                            <p>
+                                Every single morning when I wake up, my heart fills with sincere gratitude to <strong class="text-rose-600 font-bold">Allah (SWT)</strong> for blessing my life with someone as pure, kind, and beautiful as you. You are my true happiness and the answer to my every sincere prayer.
+                            </p>
+                            
+                            <p>
+                                My precious <em class="text-rose-600 font-semibold">Brekhna Gul</em>, your gentle smile and sweet presence bring an undeniable warmth to my soul. You are my heart’s comfort, my inspiration, and my greatest blessing in this world.
+                            </p>
+
+                            <div class="italic bg-rose-50 p-4 rounded-xl border-l-4 border-rose-600 text-slate-800 text-xs sm:text-sm space-y-2 shadow-inner">
+                                <p class="font-bold text-rose-700">My Du'a For My Queen 🤲✨</p>
+                                <p>"May Allah (SWT) protect you from every evil eye (Nazar), surround your life with endless peace, health, and joy, and keep that radiant smile on your face forever."</p>
+                            </div>
+
+                            <p>
+                                I pray that Allah blesses our bond with unshakeable love, mercy, and harmony. Looking into the future, my heart desires nothing more than to walk by your side in this <em class="text-rose-600 font-semibold">Dunya</em>, holding your hand through every chapter, and by His infinite mercy, being reunited with you forever in <em class="text-rose-700 font-bold">Jannah</em>.
+                            </p>
+
+                            <p>
+                                Always remember, no matter where life takes us, your Janam <strong class="text-rose-700 font-bold">Arsalan Khan</strong> is completely devoted to loving and protecting you with all my heart.
+                            </p>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t-2 border-rose-200 text-right">
+                            <p class="text-slate-500 text-xs">Forever Yours,</p>
+                            <p class="font-handwriting text-3xl text-rose-700 font-bold mt-0.5">Your Janam Arsalan Khan ❤️</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page Progress Guard Button -->
+            <button id="toPoetryBtn" onclick="goToSection(4)" class="mt-8 px-8 py-3.5 bg-gradient-to-r from-amber-400 via-pink-500 to-rose-600 text-white font-extrabold text-base rounded-2xl shadow-2xl transition-all duration-300 opacity-0 pointer-events-none flex items-center gap-2 border-2 border-amber-300">
+                <span>Read Poetry For Janam 📜</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </section>
+
+        <!-- ================= PAGE 4 (NEW): POETRY FOR MY JANAM ================= -->
+        <section id="section4" class="w-full max-w-xl text-center hidden opacity-0 transform translate-y-8 transition-all duration-700 my-auto">
+            <div class="poetry-card rounded-3xl p-6 sm:p-9 relative overflow-hidden animate-ambient">
+                
+                <div class="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-tr from-amber-400 to-yellow-300 text-rose-950 rounded-2xl mb-4 shadow-xl border-2 border-white">
+                    <i class="fas fa-feather-alt text-2xl"></i>
+                </div>
+
+                <h2 class="font-poetry-title text-2xl sm:text-3xl text-amber-300 mb-2 tracking-wide leading-tight drop-shadow-md">
+                    Poetry For My Janam
+                </h2>
+                <p class="font-handwriting text-2xl text-rose-200 mb-6">Dedicated to Brekhna Gul 🌹</p>
+
+                <!-- Poetry Lines Container -->
+                <div class="bg-black/30 p-6 rounded-2xl border border-amber-400/40 space-y-6 text-center shadow-inner my-4">
+                    
+                    <div class="space-y-2">
+                        <p class="font-handwriting text-3xl sm:text-4xl text-amber-200 leading-snug">
+                            "Tumhari ik muskaan se mehak uthti hai meri duniya,"
+                        </p>
+                        <p class="font-handwriting text-3xl sm:text-4xl text-rose-300 leading-snug">
+                            "Tum se hi hai meri har khushi, tum hi meri zindagani..." ✨
+                        </p>
+                    </div>
+
+                    <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-amber-400 to-transparent mx-auto"></div>
+
+                    <div class="space-y-2">
+                        <p class="text-sm sm:text-base text-rose-100 font-medium italic leading-relaxed">
+                            "Like a flower blooming softly under the starlight night,<br>
+                            You filled my world with grace and everlasting light."
+                        </p>
+                        <p class="text-sm sm:text-base text-amber-300 font-bold italic leading-relaxed">
+                            "In every prayer I speak your name with love so true,<br>
+                            Brekhna, my heart will forever belong to you." ❤️
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- Page Progress Guard Button -->
+                <button onclick="goToSection(5)" class="mt-4 w-full py-4 bg-gradient-to-r from-rose-600 via-pink-600 to-amber-500 text-white font-extrabold text-lg rounded-2xl shadow-2xl hover:scale-[1.02] active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 border-2 border-amber-300">
+                    <span>Play Flower Collection Game 🌸</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 5: FLOWER CATCHING MINI-GAME ================= -->
+        <section id="section5" class="w-full max-w-xl text-center hidden opacity-0 transform translate-y-8 transition-all duration-700 my-auto">
+            <div class="glass-card rounded-3xl p-5 sm:p-7 relative">
+                
+                <div class="mb-3">
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white drop-shadow-md">
+                        Collect Flowers for Janam! 🌸💐
+                    </h2>
+                    <p class="text-rose-300 font-semibold text-xs sm:text-sm mt-1">
+                        Catch 10 falling flowers to unlock the final surprise!
+                    </p>
+                </div>
+
+                <!-- Flower Counter -->
+                <div class="flex items-center justify-center gap-2 mb-3">
+                    <span class="bg-rose-950/80 text-amber-300 font-extrabold px-5 py-1.5 rounded-full border-2 border-amber-400 text-sm shadow-lg">
+                        Flowers Collected: <span id="flowerScore" class="text-lg text-white">0</span> / 10
+                    </span>
+                </div>
+
+                <!-- Game Canvas -->
+                <div class="relative w-full aspect-[4/3] max-h-[290px] bg-gradient-to-b from-slate-900 via-rose-950 to-pink-950 rounded-2xl border-2 border-amber-400 overflow-hidden shadow-inner">
+                    <canvas id="flowerCanvas" class="w-full h-full block cursor-pointer touch-none"></canvas>
+                </div>
+
+                <!-- Progress Guard Button -->
+                <button id="toFinalGameBtn" onclick="goToSection(6)" class="mt-5 w-full py-4 bg-gradient-to-r from-rose-600 via-pink-600 to-amber-500 text-white font-extrabold text-lg rounded-2xl shadow-2xl transition-all duration-300 opacity-50 pointer-events-none flex items-center justify-center gap-2 border-2 border-amber-300">
+                    <span>Go to Final Game 💖</span>
+                    <i class="fas fa-lock text-sm" id="p5LockIcon"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 6: FINAL OBSTACLE GAME & PERMANENT ENDING ================= -->
+        <section id="section6" class="w-full max-w-xl text-center hidden opacity-0 transform translate-y-8 transition-all duration-700 my-auto">
+            <div class="glass-card rounded-3xl p-5 sm:p-7 relative">
+                
+                <!-- Game Header Banner -->
+                <div class="mb-2">
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-amber-300 flex items-center justify-center gap-2 drop-shadow-md">
+                        <span>Forever Together</span>
+                        <i class="fas fa-heart text-rose-500 animate-pulse"></i>
+                    </h2>
+                    <p class="text-rose-200 font-semibold text-xs sm:text-sm mt-0.5">
+                        Get close to Arsalan to make him happy! 🥹
+                    </p>
+                </div>
+
+                <!-- Game Area -->
+                <div class="relative w-full aspect-[4/3] max-h-[320px] bg-gradient-to-b from-rose-950 via-purple-950 to-slate-950 rounded-2xl border-2 border-amber-400 overflow-hidden shadow-inner flex items-center justify-center">
+                    <canvas id="mazeCanvas" class="w-full h-full block cursor-grab active:cursor-grabbing touch-none z-10"></canvas>
+                    
+                    <!-- Highly Visible Dynamic Speech Cards -->
+                    <div id="dialogBrekhna" class="absolute z-30 hidden bg-gradient-to-r from-rose-600 to-pink-600 text-white px-4 py-2 rounded-2xl shadow-2xl text-xs sm:text-sm font-extrabold border-2 border-amber-300 animate-bounce pointer-events-none transition-all">
+                        Don't leave, okiee? 🥺
+                    </div>
+                    <div id="dialogArsalan" class="absolute z-30 hidden bg-gradient-to-r from-amber-400 to-yellow-300 text-rose-950 px-4 py-2 rounded-2xl shadow-2xl text-xs sm:text-sm font-extrabold border-2 border-white animate-bounce pointer-events-none transition-all" style="animation-delay: 0.15s;">
+                        I won't... Ever! ❤️
+                    </div>
+
+                    <!-- Permanent Ending Banner Overlay (NO Try Again Button) -->
+                    <div id="victoryOverlay" class="absolute inset-0 bg-black/80 backdrop-blur-md hidden flex-col items-center justify-center p-4 text-center z-40 transition-all">
+                        
+                        <div class="text-5xl mb-2 animate-bounce">👑💖🌹</div>
+
+                        <!-- Top Title -->
+                        <span class="bg-amber-400 text-rose-950 font-black text-xs sm:text-sm px-4 py-1.5 rounded-full uppercase tracking-widest mb-3 shadow-lg border border-white">
+                            Forever Together ❤️
+                        </span>
+
+                        <!-- Main Giant Declaration Banner -->
+                        <div class="bg-gradient-to-r from-rose-600 via-pink-600 to-rose-600 text-white font-extrabold text-xl sm:text-3xl p-4 sm:p-5 rounded-2xl border-2 border-amber-300 shadow-2xl max-w-sm leading-snug animate-pulse my-2">
+                            I Love You Soo Much<br>
+                            <span class="text-amber-300 font-handwriting text-3xl sm:text-4xl block mt-1">Brekhna Gul! 💖</span>
+                        </div>
+
+                        <p class="text-rose-200 font-bold text-xs sm:text-sm mt-3">
+                            Arsalan Khan & Brekhna Gul Always 💕
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Touch Control Pad -->
+                <div id="gameControls" class="mt-3 flex flex-col items-center gap-2">
+                    <div class="sm:hidden grid grid-cols-3 gap-2 w-36">
+                        <div></div>
+                        <button onclick="moveMazeChar('up')" class="bg-rose-900/90 border-2 border-amber-400 text-amber-300 p-2.5 rounded-xl shadow active:bg-rose-800"><i class="fas fa-chevron-up"></i></button>
+                        <div></div>
+                        <button onclick="moveMazeChar('left')" class="bg-rose-900/90 border-2 border-amber-400 text-amber-300 p-2.5 rounded-xl shadow active:bg-rose-800"><i class="fas fa-chevron-left"></i></button>
+                        <button onclick="moveMazeChar('down')" class="bg-rose-900/90 border-2 border-amber-400 text-amber-300 p-2.5 rounded-xl shadow active:bg-rose-800"><i class="fas fa-chevron-down"></i></button>
+                        <button onclick="moveMazeChar('right')" class="bg-rose-900/90 border-2 border-amber-400 text-amber-300 p-2.5 rounded-xl shadow active:bg-rose-800"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+
+                    <p class="text-rose-200 text-xs text-center font-medium">
+                        💡 Drag Brekhna around obstacles or use touch controls
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative z-10 text-center py-3 text-xs text-rose-300 font-semibold">
+        Crafted with Endless Love by Arsalan Khan for Brekhna Gul ❤️
+    </footer>
+
+    <!-- ================= JAVASCRIPT LOGIC ================= -->
+    <script>
+        /* ----------------------------------------------------
+           1. Web Audio API Synthesizer
+        ---------------------------------------------------- */
+        let audioCtx = null;
+        let isMusicPlaying = false;
+        let bgInterval = null;
+
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
+
+        function playTone(freq, duration = 0.25, type = 'sine', gainVal = 0.1) {
+            if (!audioCtx) return;
+            try {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = type;
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                gain.gain.setValueAtTime(gainVal, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + duration);
+            } catch (e) { console.log(e); }
+        }
+
+        function playChime() {
+            initAudio();
+            const notes = [523.25, 659.25, 783.99, 1046.50];
+            notes.forEach((freq, idx) => {
+                setTimeout(() => playTone(freq, 0.4, 'sine', 0.12), idx * 110);
+            });
+        }
+
+        function toggleAudio() {
+            initAudio();
+            const btn = document.getElementById('musicBtn');
+            const icon = document.getElementById('musicIcon');
+            
+            if (isMusicPlaying) {
+                isMusicPlaying = false;
+                clearInterval(bgInterval);
+                icon.className = 'fas fa-music text-lg';
+                btn.classList.remove('bg-amber-400', 'text-rose-950');
+                btn.classList.add('text-amber-300');
+            } else {
+                isMusicPlaying = true;
+                icon.className = 'fas fa-volume-up text-lg';
+                btn.classList.add('bg-amber-400', 'text-rose-950');
+                btn.classList.remove('text-amber-300');
+
+                const melody = [329.63, 392.00, 440.00, 523.25, 440.00, 392.00];
+                let noteIdx = 0;
+                bgInterval = setInterval(() => {
+                    playTone(melody[noteIdx], 0.6, 'sine', 0.04);
+                    noteIdx = (noteIdx + 1) % melody.length;
+                }, 750);
+            }
+        }
+
+        /* ----------------------------------------------------
+           2. Floating Colorful Hearts Canvas
+        ---------------------------------------------------- */
+        const canvas = document.getElementById('heartCanvas');
+        const ctx = canvas.getContext('2d');
+        let hearts = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Heart {
+            constructor() { this.reset(); }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height + Math.random() * 80;
+                this.size = Math.random() * 12 + 6;
+                this.speedY = Math.random() * 1.3 + 0.5;
+                this.speedX = Math.sin(Math.random() * Math.PI) * 0.7;
+                this.opacity = Math.random() * 0.6 + 0.4;
+                const colors = ['#f43f5e', '#ec4899', '#fbbf24', '#f472b6', '#a855f7'];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+            }
+            update() {
+                this.y -= this.speedY;
+                this.x += this.speedX;
+                if (this.y < -20) this.reset();
+            }
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.opacity;
+                ctx.translate(this.x, this.y);
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(-this.size/2, 0, this.size/2, 0, Math.PI, true);
+                ctx.arc(this.size/2, 0, this.size/2, 0, Math.PI, true);
+                ctx.lineTo(0, this.size);
+                ctx.closePath();
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        for (let i = 0; i < 35; i++) hearts.push(new Heart());
+
+        function animateHearts() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            hearts.forEach(h => { h.update(); h.draw(); });
+            requestAnimationFrame(animateHearts);
+        }
+        animateHearts();
+
+        /* ----------------------------------------------------
+           3. Page Navigation Engine
+        ---------------------------------------------------- */
+        let currentSection = 1;
+
+        function goToSection(secNum) {
+            initAudio();
+            playTone(550, 0.2);
+
+            const currentEl = document.getElementById(`section${currentSection}`);
+            const nextEl = document.getElementById(`section${secNum}`);
+
+            currentEl.classList.add('opacity-0', 'translate-y-8');
+            
+            setTimeout(() => {
+                currentEl.classList.add('hidden');
+                nextEl.classList.remove('hidden');
+                
+                setTimeout(() => {
+                    nextEl.classList.remove('opacity-0', 'translate-y-8');
+                    nextEl.classList.add('opacity-100', 'translate-y-0');
+                    if (secNum === 5) startFlowerGame();
+                    if (secNum === 6) initMazeGame();
+                }, 50);
+            }, 400);
+
+            currentSection = secNum;
+        }
+
+        /* ----------------------------------------------------
+           4. Love Slider Reactions & Guard
+        ---------------------------------------------------- */
+        const loveReactions = {
+            1: { emoji: "😏", text: "A little bit... 😏 Arsalan needs more love!" },
+            2: { emoji: "😊💖", text: "Yes! Sweet happy reaction with cute hearts! 💕" },
+            3: { emoji: "🥰🌹", text: "Yessssss! Joyful blushing reaction with floating roses! 🌹" },
+            4: { emoji: "❤️👑", text: "Yessssss he's the love of my life! ❤️" },
+            5: { emoji: "💍👑✨", text: "More than life itself & forever and ever! 💕" }
+        };
+
+        function updateLoveLevel(val) {
+            initAudio();
+            const emojiEl = document.getElementById('reactionEmoji');
+            const textEl = document.getElementById('reactionText');
+            const data = loveReactions[val];
+
+            playTone(350 + (val * 110), 0.2);
+
+            emojiEl.innerText = data.emoji;
+            textEl.innerText = data.text;
+
+            // Unlock Page 2 Progress Guard
+            const continueBtn = document.getElementById('p2ContinueBtn');
+            const lockIcon = document.getElementById('p2LockIcon');
+            continueBtn.classList.remove('opacity-50', 'pointer-events-none');
+            lockIcon.className = 'fas fa-arrow-right';
+
+            if (val >= 3) {
+                confetti({
+                    particleCount: val * 18,
+                    spread: 60 + (val * 10),
+                    origin: { y: 0.65 },
+                    colors: ['#f43f5e', '#ec4899', '#fbbf24']
+                });
+            }
+        }
+
+        /* ----------------------------------------------------
+           5. Interactive Envelope Guard Logic
+        ---------------------------------------------------- */
+        let isEnvelopeOpen = false;
+
+        function openEnvelope() {
+            if (isEnvelopeOpen) return;
+            isEnvelopeOpen = true;
+
+            playChime();
+
+            const env = document.getElementById('envelope');
+            const seal = document.getElementById('sealBtn');
+            const poetryBtn = document.getElementById('toPoetryBtn');
+
+            seal.classList.add('opacity-0', 'scale-0');
+            env.classList.add('open');
+
+            confetti({
+                particleCount: 100,
+                spread: 85,
+                origin: { y: 0.55 },
+                colors: ['#f43f5e', '#fb7185', '#fbbf24', '#fff']
+            });
+
+            // Show Next Button after envelope opens
+            setTimeout(() => {
+                poetryBtn.classList.remove('opacity-0', 'pointer-events-none');
+                poetryBtn.classList.add('opacity-100');
+            }, 800);
+        }
+
+        /* ----------------------------------------------------
+           6. PAGE 5: Flower Collection Game Logic
+        ---------------------------------------------------- */
+        const fCanvas = document.getElementById('flowerCanvas');
+        const fCtx = fCanvas.getContext('2d');
+        let flowerScore = 0;
+        let fallingFlowers = [];
+        let basket = { x: 0, y: 0, width: 75, height: 22 };
+        let flowerGameActive = false;
+
+        function startFlowerGame() {
+            const rect = fCanvas.getBoundingClientRect();
+            fCanvas.width = rect.width;
+            fCanvas.height = rect.height;
+
+            basket.x = fCanvas.width / 2 - basket.width / 2;
+            basket.y = fCanvas.height - 35;
+            flowerScore = 0;
+            document.getElementById('flowerScore').innerText = flowerScore;
+            fallingFlowers = [];
+            flowerGameActive = true;
+
+            spawnFlower();
+            requestAnimationFrame(updateFlowerGame);
+        }
+
+        function spawnFlower() {
+            if (!flowerGameActive || fallingFlowers.length > 5) return;
+            const flowerTypes = ['🌸', '🌹', '🌻', '🌷', '🌺'];
+            fallingFlowers.push({
+                x: Math.random() * (fCanvas.width - 30) + 15,
+                y: -20,
+                speed: Math.random() * 1.6 + 1.2,
+                symbol: flowerTypes[Math.floor(Math.random() * flowerTypes.length)],
+                size: 26
+            });
+            setTimeout(spawnFlower, Math.random() * 900 + 500);
+        }
+
+        function updateFlowerGame() {
+            if (!flowerGameActive) return;
+
+            fCtx.clearRect(0, 0, fCanvas.width, fCanvas.height);
+
+            // Draw Basket
+            fCtx.fillStyle = '#f43f5e';
+            fCtx.beginPath();
+            fCtx.roundRect(basket.x, basket.y, basket.width, basket.height, 10);
+            fCtx.fill();
+            fCtx.strokeStyle = '#fbbf24';
+            fCtx.lineWidth = 2;
+            fCtx.stroke();
+
+            fCtx.fillStyle = '#ffffff';
+            fCtx.font = 'bold 11px Poppins, sans-serif';
+            fCtx.textAlign = 'center';
+            fCtx.fillText('Basket 🧺', basket.x + basket.width / 2, basket.y + 15);
+
+            // Draw & Update Flowers
+            for (let i = fallingFlowers.length - 1; i >= 0; i--) {
+                const f = fallingFlowers[i];
+                f.y += f.speed;
+
+                fCtx.font = `${f.size}px serif`;
+                fCtx.fillText(f.symbol, f.x, f.y);
+
+                // Collision with Basket
+                if (f.y + 10 >= basket.y && f.x >= basket.x - 10 && f.x <= basket.x + basket.width + 10) {
+                    fallingFlowers.splice(i, 1);
+                    flowerScore++;
+                    document.getElementById('flowerScore').innerText = flowerScore;
+                    playTone(600 + flowerScore * 40, 0.15);
+
+                    if (flowerScore >= 10) {
+                        flowerGameActive = false;
+                        unlockFinalGame();
+                    }
+                } else if (f.y > fCanvas.height + 20) {
+                    fallingFlowers.splice(i, 1);
+                }
+            }
+
+            if (flowerGameActive) requestAnimationFrame(updateFlowerGame);
+        }
+
+        function unlockFinalGame() {
+            playChime();
+            confetti({
+                particleCount: 90,
+                spread: 75,
+                origin: { y: 0.6 },
+                colors: ['#fbbf24', '#f43f5e', '#ec4899']
+            });
+
+            const finalBtn = document.getElementById('toFinalGameBtn');
+            const lockIcon = document.getElementById('p5LockIcon');
+            finalBtn.classList.remove('opacity-50', 'pointer-events-none');
+            lockIcon.className = 'fas fa-arrow-right';
+        }
+
+        function moveBasket(e) {
+            const rect = fCanvas.getBoundingClientRect();
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            basket.x = Math.max(0, Math.min(fCanvas.width - basket.width, clientX - rect.left - basket.width / 2));
+        }
+
+        fCanvas.addEventListener('mousemove', moveBasket);
+        fCanvas.addEventListener('touchmove', moveBasket, { passive: true });
+
+        /* ----------------------------------------------------
+           7. PAGE 6: Final Game & Permanent Ending Logic
+        ---------------------------------------------------- */
+        const mCanvas = document.getElementById('mazeCanvas');
+        const mCtx = mCanvas.getContext('2d');
+
+        let arsalanObj = { x: 0, y: 0, radius: 24 };
+        let brekhnaObj = { x: 0, y: 0, radius: 24, isDragging: false };
+        let obstacles = [];
+        let mazeActive = false;
+        let isMazeWon = false;
+        let confettiInterval = null;
+
+        function initMazeGame() {
+            const rect = mCanvas.getBoundingClientRect();
+            mCanvas.width = rect.width;
+            mCanvas.height = rect.height;
+
+            // Arsalan in TOP RIGHT Corner
+            arsalanObj.x = mCanvas.width - 48;
+            arsalanObj.y = 48;
+
+            // Brekhna in BOTTOM LEFT Corner
+            brekhnaObj.x = 48;
+            brekhnaObj.y = mCanvas.height - 48;
+
+            // Strategic Obstacles
+            obstacles = [
+                { x: mCanvas.width * 0.28, y: mCanvas.height * 0.22, w: 90, h: 22, label: "Busy Work 💼" },
+                { x: mCanvas.width * 0.48, y: mCanvas.height * 0.55, w: 100, h: 22, label: "Distance ✈️" },
+                { x: mCanvas.width * 0.15, y: mCanvas.height * 0.6, w: 85, h: 22, label: "Traffic 🚗" },
+                { x: mCanvas.width * 0.6, y: mCanvas.height * 0.2, w: 75, h: 22, label: "Rain Cloud 🌧️" }
+            ];
+
+            isMazeWon = false;
+            document.getElementById('victoryOverlay').classList.add('hidden');
+            document.getElementById('victoryOverlay').classList.remove('flex');
+            document.getElementById('dialogBrekhna').classList.add('hidden');
+            document.getElementById('dialogArsalan').classList.add('hidden');
+
+            mazeActive = true;
+            requestAnimationFrame(drawMazeGame);
+        }
+
+        function moveMazeChar(dir) {
+            if (isMazeWon) return;
+            const step = 18;
+            let newX = brekhnaObj.x;
+            let newY = brekhnaObj.y;
+
+            if (dir === 'up') newY -= step;
+            if (dir === 'down') newY += step;
+            if (dir === 'left') newX -= step;
+            if (dir === 'right') newX += step;
+
+            checkAndMoveBrekhna(newX, newY);
+        }
+
+        function checkAndMoveBrekhna(targetX, targetY) {
+            if (isMazeWon) return;
+
+            targetX = Math.max(brekhnaObj.radius, Math.min(mCanvas.width - brekhnaObj.radius, targetX));
+            targetY = Math.max(brekhnaObj.radius, Math.min(mCanvas.height - brekhnaObj.radius, targetY));
+
+            let collided = false;
+            for (let obs of obstacles) {
+                if (targetX + brekhnaObj.radius > obs.x &&
+                    targetX - brekhnaObj.radius < obs.x + obs.w &&
+                    targetY + brekhnaObj.radius > obs.y &&
+                    targetY - brekhnaObj.radius < obs.y + obs.h) {
+                    collided = true;
+                    playTone(220, 0.1);
+                    break;
+                }
+            }
+
+            if (!collided) {
+                brekhnaObj.x = targetX;
+                brekhnaObj.y = targetY;
+            }
+        }
+
+        function drawAvatar(char, name, color, isHappy = false) {
+            mCtx.save();
+            mCtx.translate(char.x, char.y);
+
+            // Shadow
+            mCtx.beginPath();
+            mCtx.ellipse(0, char.radius + 4, 15, 4, 0, 0, Math.PI * 2);
+            mCtx.fillStyle = 'rgba(0,0,0,0.3)';
+            mCtx.fill();
+
+            // Head
+            mCtx.beginPath();
+            mCtx.arc(0, 0, char.radius, 0, Math.PI * 2);
+            mCtx.fillStyle = color;
+            mCtx.fill();
+            mCtx.lineWidth = 3;
+            mCtx.strokeStyle = '#fbbf24';
+            mCtx.stroke();
+
+            // Eyes
+            mCtx.fillStyle = '#0f172a';
+            mCtx.beginPath();
+            mCtx.arc(-7, -2, 3, 0, Math.PI * 2);
+            mCtx.arc(7, -2, 3, 0, Math.PI * 2);
+            mCtx.fill();
+
+            // Blushing
+            if (isHappy) {
+                mCtx.fillStyle = 'rgba(244, 63, 94, 0.6)';
+                mCtx.beginPath();
+                mCtx.arc(-10, 4, 4.5, 0, Math.PI * 2);
+                mCtx.arc(10, 4, 4.5, 0, Math.PI * 2);
+                mCtx.fill();
+            }
+
+            // Smile
+            mCtx.beginPath();
+            mCtx.arc(0, 3, isHappy ? 6 : 4, 0, Math.PI);
+            mCtx.strokeStyle = '#0f172a';
+            mCtx.lineWidth = 2.5;
+            mCtx.stroke();
+
+            // Flower icon for Brekhna
+            if (name.includes("Brekhna")) {
+                mCtx.fillStyle = '#e11d48';
+                mCtx.beginPath();
+                mCtx.arc(-11, -15, 5, 0, Math.PI * 2);
+                mCtx.fill();
+            }
+
+            mCtx.restore();
+
+            // Label
+            mCtx.save();
+            mCtx.font = 'bold 11px Poppins, sans-serif';
+            mCtx.textAlign = 'center';
+            mCtx.fillStyle = '#ffffff';
+            mCtx.shadowColor = '#000000';
+            mCtx.shadowBlur = 4;
+            mCtx.fillText(name, char.x, char.y + char.radius + 16);
+            mCtx.restore();
+        }
+
+        function drawMazeGame() {
+            if (!mazeActive) return;
+
+            mCtx.clearRect(0, 0, mCanvas.width, mCanvas.height);
+
+            // Draw Obstacles
+            obstacles.forEach(obs => {
+                mCtx.fillStyle = '#be123c';
+                mCtx.beginPath();
+                mCtx.roundRect(obs.x, obs.y, obs.w, obs.h, 8);
+                mCtx.fill();
+                mCtx.strokeStyle = '#fbbf24';
+                mCtx.lineWidth = 1.5;
+                mCtx.stroke();
+
+                mCtx.fillStyle = '#ffffff';
+                mCtx.font = 'bold 10px Poppins, sans-serif';
+                mCtx.textAlign = 'center';
+                mCtx.fillText(obs.label, obs.x + obs.w / 2, obs.y + 14);
+            });
+
+            // Distance Check
+            const dx = arsalanObj.x - brekhnaObj.x;
+            const dy = arsalanObj.y - brekhnaObj.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            const winDist = 58;
+
+            if (dist < winDist && !isMazeWon) {
+                isMazeWon = true;
+                playChime();
+
+                const dBrekhna = document.getElementById('dialogBrekhna');
+                const dArsalan = document.getElementById('dialogArsalan');
+
+                dBrekhna.classList.remove('hidden');
+                dArsalan.classList.remove('hidden');
+
+                // Position speech bubbles perfectly near avatars
+                dBrekhna.style.left = `${Math.max(10, brekhnaObj.x - 60)}px`;
+                dBrekhna.style.top = `${Math.max(10, brekhnaObj.y - 65)}px`;
+
+                dArsalan.style.left = `${Math.min(mCanvas.width - 130, arsalanObj.x - 60)}px`;
+                dArsalan.style.top = `${Math.max(10, arsalanObj.y - 65)}px`;
+
+                // Initial Heart Confetti
+                confetti({
+                    particleCount: 100,
+                    spread: 90,
+                    origin: { y: 0.5 },
+                    colors: ['#f43f5e', '#fbbf24', '#ec4899']
+                });
+
+                // Continuous Heart Cannons
+                confettiInterval = setInterval(() => {
+                    confetti({
+                        particleCount: 25,
+                        spread: 60,
+                        origin: { y: 0.6 },
+                        colors: ['#f43f5e', '#fbbf24', '#f472b6']
+                    });
+                }, 1800);
+
+                // Show Permanent Victory Overlay Banner
+                setTimeout(() => {
+                    const victoryEl = document.getElementById('victoryOverlay');
+                    victoryEl.classList.remove('hidden');
+                    victoryEl.classList.add('flex');
+                }, 1400);
+            }
+
+            drawAvatar(arsalanObj, "Arsalan 👑", "#fbcfe8", isMazeWon);
+            drawAvatar(brekhnaObj, "Brekhna 🌸", "#f472b6", isMazeWon);
+
+            if (mazeActive) requestAnimationFrame(drawMazeGame);
+        }
+
+        // Drag Controls for Maze Game
+        function handleMazeStart(e) {
+            if (isMazeWon) return;
+            const rect = mCanvas.getBoundingClientRect();
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+            const x = clientX - rect.left;
+            const y = clientY - rect.top;
+
+            const dist = Math.sqrt((x - brekhnaObj.x) ** 2 + (y - brekhnaObj.y) ** 2);
+            if (dist < brekhnaObj.radius + 18) {
+                brekhnaObj.isDragging = true;
+            }
+        }
+
+        function handleMazeMove(e) {
+            if (!brekhnaObj.isDragging || isMazeWon) return;
+            const rect = mCanvas.getBoundingClientRect();
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+            checkAndMoveBrekhna(clientX - rect.left, clientY - rect.top);
+        }
+
+        function handleMazeEnd() {
+            brekhnaObj.isDragging = false;
+        }
+
+        mCanvas.addEventListener('mousedown', handleMazeStart);
+        mCanvas.addEventListener('mousemove', handleMazeMove);
+        window.addEventListener('mouseup', handleMazeEnd);
+
+        mCanvas.addEventListener('touchstart', handleMazeStart, { passive: true });
+        mCanvas.addEventListener('touchmove', handleMazeMove, { passive: true });
+        window.addEventListener('touchend', handleMazeEnd);
+
+        // Keyboard Controls
+        window.addEventListener('keydown', (e) => {
+            if (currentSection !== 6 || isMazeWon) return;
+            if (e.key === 'ArrowUp' || e.key === 'w') moveMazeChar('up');
+            if (e.key === 'ArrowDown' || e.key === 's') moveMazeChar('down');
+            if (e.key === 'ArrowLeft' || e.key === 'a') moveMazeChar('left');
+            if (e.key === 'ArrowRight' || e.key === 'd') moveMazeChar('right');
+        });
+
+        window.onload = function() {
+            document.body.addEventListener('click', initAudio, { once: true });
+            document.body.addEventListener('touchstart', initAudio, { once: true });
+        };
+    </script>
+</body>
+</html>
